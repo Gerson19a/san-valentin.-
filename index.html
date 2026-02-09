@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>IA del Amor 💖</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd1e8, #fff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.chatbox {
+  background: white;
+  width: 95%;
+  max-width: 430px;
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.bot, .user {
+  padding: 10px 14px;
+  border-radius: 15px;
+  margin: 8px 0;
+  animation: fadeIn 0.5s;
+}
+
+.bot {
+  background: #ffe4ef;
+}
+
+.user {
+  background: #d1f0ff;
+  text-align: right;
+}
+
+.buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+button {
+  background: #ff4d88;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 8px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(8px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Música -->
+<audio autoplay loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="chatbox" id="chat">
+
+  <div class="bot">
+    🤖 <b>IA AmorOS v5.0</b><br>
+    Sistema iniciado…<br>
+    Analizando recuerdos del corazón…
+  </div>
+
+  <div class="bot">
+    Hola <b>Magda Nataly Rafaele Delgado</b> 💗<br>
+    Hoy no vengo con datos…<br>
+    vengo con verdades.
+  </div>
+
+  <div class="buttons">
+    <button onclick="next()">¿Verdades?</button>
+    <button onclick="next()">Me asustas 😅</button>
+  </div>
+
+</div>
+
+<script>
+const chat = document.getElementById("chat");
+let step = 0;
+
+const convo = [
+  {
+    user: "¿Verdades?",
+    bot: "Sí…<br>Como que cuando te dicen <b>mi princesa</b>, todo se siente más bonito 🥰"
+  },
+  {
+    user: "Me asustas 😅",
+    bot: "Tranquila 😌<br>Solo estoy leyendo recuerdos donde tú sonríes."
+  },
+  {
+    user: "¿Qué recuerdos?",
+    bot: "Salir a comer 🍔🍟<br>comprarse hartos dulces 🍭<br>y reírse sin razón."
+  },
+  {
+    user: "Eso me gusta",
+    bot: "También encontré momentos más suaves…<br>en el cuarto,<br>besitos tranquilos,<br>cariñitos que decían más que palabras 💕"
+  },
+  {
+    user: "Ay y eso😳",
+    bot: "Y cómo olvidar esto… 🎡😂",
+    img: "foto1.jpg"
+  },
+  {
+    user: "Jajaja ese día",
+    bot: "Juegos, nervios, risas,<br>y dos personas disfrutando estar juntas ❤️",
+    img: "foto2.jpg"
+  },
+  {
+    user: "Lo pasamos tan bien",
+    bot: "Porque no era el lugar…<br>eran ustedes.",
+    img: "foto3.jpg"
+  },
+  {
+    user: "¿Y tu conclusión?",
+    bot: "Mi conclusión no es lógica…<br>es del corazón 💖"
+  },
+  {
+    user: "Dime",
+    bot: `
+    <b>Poema final del sistema:</b><br><br>
+    No prometo días perfectos,<br>
+    pero sí tomarte la mano en los difíciles.<br>
+    No prometo respuestas a todo,<br>
+    pero sí besitos que calmen el ruido.<br><br>
+    Si el amor es elegir,<br>
+    yo te elijo hoy,<br>
+    te elijo siempre.<br><br>
+    <b>¿Aceptas ser mi San Valentín?</b> 💘
+    `
+  }
+];
+
+function next() {
+  document.querySelector(".buttons").remove();
+
+  const part = convo[step];
+  chat.innerHTML += `<div class="user">${part.user}</div>`;
+
+  setTimeout(() => {
+    chat.innerHTML += `<div class="bot">${part.bot}</div>`;
+    if (part.img) {
+      chat.innerHTML += `<img src="${part.img}">`;
+    }
+    step++;
+
+    if (step < convo.length) {
+      chat.innerHTML += `
+        <div class="buttons">
+          <button onclick="next()">Responder</button>
+        </div>`;
+    } else {
+      chat.innerHTML += `
+        <div class="bot">
+          💖 San Valentín confirmado 💖<br>
+          <b>Mi gatita & mi gatito</b><br>
+          Para siempre… paso a paso 🥰
+        </div>`;
+    }
+  }, 600);
+}
+</script>
+
+</body>
+</html>
